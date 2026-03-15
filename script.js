@@ -46,16 +46,29 @@
     // 3. Fonction Toggle Menu Mobile
     function toggleMenu() {
         if (!menuBtn || !overlay) return;
-        menuBtn.classList.toggle('is-active');
-        overlay.classList.toggle('translate-x-full');
-        overlay.classList.toggle('open');
-        body.classList.toggle('overflow-hidden');
-        
-        if (overlay.classList.contains('open')) {
-            menuBtn.classList.add('text-white');
-        } else if (window.scrollY > 80) {
-            menuBtn.classList.remove('text-white');
-            menuBtn.classList.add('text-anthracite');
+
+        const isOpen = overlay.classList.contains('open');
+
+        if (!isOpen) {
+            // OUVERTURE
+            menuBtn.classList.add('is-active');
+            overlay.classList.remove('translate-x-full');
+            overlay.classList.add('open');
+            body.classList.add('overflow-hidden');
+            menuBtn.style.color = "white"; // Force le blanc sur fond noir
+        } else {
+            // FERMETURE
+            menuBtn.classList.remove('is-active');
+            overlay.classList.add('translate-x-full');
+            overlay.classList.remove('open');
+            body.classList.remove('overflow-hidden');
+            
+            // Remet la couleur selon le scroll
+            if (window.scrollY > 80) {
+                menuBtn.style.color = "#1A1A1A"; // Anthracite
+            } else {
+                menuBtn.style.color = "white";
+            }
         }
     }
 

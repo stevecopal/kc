@@ -182,7 +182,7 @@ h1, h2, h3, h4, .font-serif {
   display: block;
   width: 28px;
   height: 2px;
-  background-color: currentColor;
+  background-color: black;
   margin: 6px auto;
   transition: all 0.4s ease-in-out;
 }
